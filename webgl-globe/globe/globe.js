@@ -78,7 +78,7 @@ DAT.Globe = function(container, opts) {
 
   var mouse = { x: 0, y: 0 }, mouseOnDown = { x: 0, y: 0 };
   var rotation = { x: 0, y: 0 },
-      target = { x: Math.PI*3/2, y: Math.PI / 6.0 },
+      target = { x: 1/180, y: 50/180 },
       targetOnDown = { x: 0, y: 0 };
 
   var distance = 100000, distanceTarget = 100000;
@@ -157,6 +157,7 @@ DAT.Globe = function(container, opts) {
     window.addEventListener('resize', onWindowResize, false);
 
     container.addEventListener('mouseover', function() {
+      console.log("over");
       overRenderer = true;
     }, false);
 
