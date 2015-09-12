@@ -27,6 +27,23 @@ while(!feof($myFile)) {
   $data[$i]['status_code'] = $statusCode;
   $i++;
 }
-print_r($data);
+$array = array();
+$array[] = array();
+$i = 0;
+$countOfCities = 0;
+foreach($data as $d) {
+  $countOfCities = $countOfCities + $d['city_counts'];
+}
+$array[0][0] = 'appointments';
+$points = array();
+foreach($data as $key => $d) {
+  if ( $d['request_category'] == 'appointments') {
+    echo $d['city']."\n";
+    echo $d['city_counts']."\n";
+    array_push($points, $d['latitude'], $d['longitude'], ($d['city_counts']/$countOfCities)*10);
+  }
+}
+$array[0][1] = $points;
+echo json_encode($array);
 fclose($myFile);
 ?>
